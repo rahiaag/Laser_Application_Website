@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+
+  <title>Laser Energy Calculator</title>
+  <link rel="stylesheet" href="Energy.css">
+</head>
+<body>
+  <div id="energyStateInput">
+    <h2>Laser Energy Calculator</h2>
+    <label for="waveLength">Wave Length (Angstrom):</label>
+    <input type="number" id="waveLength" placeholder="Enter the wave length">
+
+   
+    <button onclick="calculateEnergy()">Calculate Energy</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateEnergy() {
+      let waveLength1 = parseFloat(document.getElementById("waveLength").value);
+ 
+   
+   
+
+      if (isNaN(waveLength1)) {
+        document.getElementById("result").textContent = "Please enter valid numerical values.";
+        return;
+      }
+      waveLength = waveLength1 * Math.pow(10, -10);
+    ;
+
+      let energy = (19.878 * Math.pow(10, -26)) / waveLength;
+
+      let formattedPopulation = energy.toExponential(3);
+      formattedPopulation = formattedPopulation.replace('e', ' * 10^');
+      formattedPopulation = formattedPopulation.replace('+', '');
+      formattedPopulation = formattedPopulation.replace('-', '-');
+
+      document.getElementById("result").textContent = 'Energy is: ' + formattedPopulation;
+    }
+  </script>
+</body>
+</html>
